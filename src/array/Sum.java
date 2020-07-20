@@ -26,6 +26,33 @@ public class Sum {
     }
 
     /**
+     * 167. 两数之和 II - 输入有序数组
+     * 双指针缩小查找范围，不会出现错过正确位置的情况
+     * 时间复杂度：O(n)
+     * 空间复杂度：O(1)
+     *
+     * @param numbers
+     * @param target
+     * @return
+     */
+    public int[] twoSum2(int[] numbers, int target) {
+        int i = 0;
+        int j = numbers.length - 1;
+        int total;
+        while (i < j) {
+            total = numbers[i] + numbers[j];
+            if (total == target) {
+                break;
+            } else if (total < target) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+        return new int[]{i + 1, j + 1}; //返回序号从1开始
+    }
+
+    /**
      * 取列表中的三个数，和等于0
      *
      * @param nums
