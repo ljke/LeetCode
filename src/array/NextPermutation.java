@@ -15,7 +15,7 @@ public class NextPermutation {
         while (p >= 0 && nums[p] >= nums[p + 1]) {
             p--;
         }
-        if (p == -1) { //特殊情况，说明当前序列已经是最大序列，反转整个链表，变为最小序列
+        if (p == -1) { //特殊情况，说明当前序列已经是最大序列，反转整个数组，变为最小序列
             reverse(nums, 0, len - 1);
             return;
         }
