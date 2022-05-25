@@ -7,7 +7,9 @@ import java.util.*;
  */
 public class Sum {
     /**
+     * 1. 两数之和
      * 取列表nums中的两个数，和等于target
+     * https://leetcode-cn.com/problems/two-sum/
      *
      * @param nums
      * @param target

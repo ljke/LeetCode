@@ -40,6 +40,14 @@ public class AddTwoNumbers {
     }
 
 
+    /**
+     * 两数相加
+     * https://leetcode.cn/problems/add-two-numbers/
+     *
+     * @param l1
+     * @param l2
+     * @return
+     */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         l1 = reverse(l1);
         l2 = reverse(l2);

@@ -9,6 +9,13 @@ package string;
  * @version : Palindrome.java, v 0.1 2021年08月20日 9:21 上午 linjie Exp $
  */
 public class Palindrome {
+    /**
+     * 回文数
+     * https://leetcode-cn.com/problems/palindrome-number/
+     *
+     * @param x
+     * @return
+     */
     public boolean isPalindromeNum(int x) {
         if (x < 0 || (x % 10 == 0 && x != 0)) {
             return false;
@@ -23,6 +30,13 @@ public class Palindrome {
         return x == reverseNum || x == (reverseNum / 10);
     }
 
+    /**
+     * 回文字符串
+     * https://leetcode-cn.com/problems/valid-palindrome/
+     *
+     * @param s
+     * @return
+     */
     public boolean isPalindromeString(String s) {
         int n = s.length();
         int left = 0, right = n - 1;
@@ -44,6 +58,13 @@ public class Palindrome {
         return true;
     }
 
+    /**
+     * 回文子串
+     * https://leetcode-cn.com/problems/palindromic-substrings/
+     *
+     * @param s
+     * @return
+     */
     public int countSubString(String s) {
         int n = s.length(), ans = 0;
         for (int i = 0; i < 2 * n - 1; i++) {

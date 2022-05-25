@@ -7,6 +7,7 @@ package string;
 /**
  * 14. 最长公共前缀
  *  (1). 横向扫描
+ *  https://leetcode-cn.com/problems/longest-common-prefix/
  * @author linjie
  * @version : LongestCommonPrefix.java, v 0.1 2021年07月22日 1:07 上午 linjie Exp $
  */

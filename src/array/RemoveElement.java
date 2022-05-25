@@ -7,6 +7,7 @@ package array;
 /**
  * 27. 移除元素
  * 双指针遍历
+ * https://leetcode-cn.com/problems/remove-element/
  *
  * @author linjie
  * @version : RemoveElement.java, v 0.1 2021年08月25日 9:20 上午 linjie Exp $

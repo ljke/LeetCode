@@ -6,6 +6,7 @@ package linkedlist;
 public class LinkedList {
     /**
      * 反转链表
+     * https://leetcode.cn/problems/reverse-linked-list/
      *
      * @param head
      * @return
@@ -47,9 +48,9 @@ public class LinkedList {
         tail.next = head; //重新指向
         return newHead;
     }
-
     /**
      * 区间反转
+     * https://leetcode.cn/problems/reverse-linked-list-ii/
      *
      * @param head
      * @param m    区间起始位置
