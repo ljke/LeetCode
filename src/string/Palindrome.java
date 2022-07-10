@@ -68,6 +68,7 @@ public class Palindrome {
     public int countSubString(String s) {
         int n = s.length(), ans = 0;
         for (int i = 0; i < 2 * n - 1; i++) {
+            // 遍历所有的回文串中心
             int left = i / 2, right = i / 2 + i % 2;
             while (left >= 0 && right < n && s.charAt(left) == s.charAt(right)) {
                 ans++;

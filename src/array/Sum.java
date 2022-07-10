@@ -55,7 +55,8 @@ public class Sum {
     }
 
     /**
-     * 取列表中的三个数，和等于0
+     * 15.取列表中的三个数，和等于0
+     * https://leetcode.cn/problems/3sum/
      *
      * @param nums
      * @return

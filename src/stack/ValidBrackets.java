@@ -4,10 +4,7 @@
  */
 package stack;
 
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 20. 有效的括号
@@ -30,7 +27,7 @@ public class ValidBrackets {
                 put('}', '{');
             }
         };
-        Deque<Character> stack = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             // 左括号入栈，右括号匹配
