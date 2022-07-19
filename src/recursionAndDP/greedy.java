@@ -13,7 +13,7 @@ package recursionAndDP;
 public class greedy {
 
     /**
-     * 跳跃游戏
+     * 55.跳跃游戏
      * https://leetcode.cn/problems/jump-game/
      *
      * @param nums

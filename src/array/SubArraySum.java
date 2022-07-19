@@ -13,7 +13,7 @@ package array;
  * @version : SubArraySum.java, v 0.1 2021年07月21日 1:43 上午 linjie Exp $
  */
 public class SubArraySum {
-    public int subarraySum(int[] nums, int k) {
+    public int subArraySum(int[] nums, int k) {
         //提前计算前缀和
         int n = nums.length;
         int[] preSum = new int[n + 1];

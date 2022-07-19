@@ -1,5 +1,8 @@
 package tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author linjie
  * @date 2020/07/21
@@ -47,11 +50,40 @@ public class BinarySearchTree {
 
     /**
      * 95. 不同的二叉搜索树 II
+     * https://leetcode.cn/problems/unique-binary-search-trees-ii/submissions/
+     *
      * @param n
      * @return
      */
-    public int printDifferentBST(int n) {
-        return 0;
+    public List<TreeNode> generateTrees(int n) {
+        if (n == 0) {
+            return new ArrayList<>();
+        }
+        return recur(1, n);
     }
 
+    public List<TreeNode> recur(int start, int end) {
+        List<TreeNode> allTree = new ArrayList<>();
+        // 循环退出条件
+        if (start > end) {
+            allTree.add(null);
+            return allTree;
+        }
+        // 遍历每个节点作为父节点
+        for (int i = start; i <= end; i++) {
+            // 递归求左右子树
+            List<TreeNode> leftTree = recur(start, i - 1);
+            List<TreeNode> rightTree = recur(i + 1, end);
+            for (TreeNode left : leftTree) {
+                for (TreeNode right : rightTree) {
+                    TreeNode node = new TreeNode();
+                    node.left = left;
+                    node.right = right;
+                    node.val = i;
+                    allTree.add(node);
+                }
+            }
+        }
+        return allTree;
+    }
 }
