@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 存在重复元素问题
  */
-public class CotainDuplicate {
+public class ContainDuplicate {
     /**
      * 是否存在重复元素
      *

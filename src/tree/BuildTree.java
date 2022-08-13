@@ -57,8 +57,8 @@ public class BuildTree {
         // 创建新节点
         TreeNode node = new TreeNode(parent);
         // 递归计算左右子树，更新边界值
-        node.left = treeRecur(preorder, p_left + 1,  p_left + leftSize, inorder, p_left, p_left + leftSize - 1);
-        node.right = treeRecur(preorder, p_left+ leftSize + 1, p_right, inorder, p_left + leftSize + 1, p_right);
+        node.left = treeRecur(preorder, p_left + 1,  p_left + leftSize, inorder, i_left, i_left + leftSize - 1);
+        node.right = treeRecur(preorder, p_left + leftSize + 1, p_right, inorder, i_left + leftSize + 1, i_right);
         return node;
     }
 

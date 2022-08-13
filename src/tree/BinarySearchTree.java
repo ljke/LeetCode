@@ -25,6 +25,28 @@ public class BinarySearchTree {
     }
 
     /**
+     * 98. 验证二叉搜索树
+     * https://leetcode.cn/problems/validate-binary-search-tree/
+     *
+     * @param root
+     * @return
+     */
+    public boolean isValidBST(TreeNode root) {
+        return recur(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    public boolean recur(TreeNode node, long low, long high) {
+        if (node == null) {
+            return true;
+        }
+        if (node.val <= low || node.val >= high) {
+            return false;
+        }
+        // 递归处理左右子树
+        return recur(node.left, low, node.val) && recur(node.right, node.val, high);
+    }
+
+    /**
      * 96. 不同的二叉搜索树
      * G(n):长度为n的序列能构成的数量
      * F(i,n):以i为根，序列长度为n的数量
