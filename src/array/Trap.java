@@ -4,6 +4,8 @@
  */
 package array;
 
+import java.util.Stack;
+
 /**
  * 42. 接雨水
  * https://leetcode.cn/problems/trapping-rain-water/
@@ -19,7 +21,7 @@ public class Trap {
      * @param height
      * @return
      */
-    public int trap(int[] height) {
+    public int trap1(int[] height) {
         int n = height.length;
         int[] left_peak = new int[n];
         int[] right_peak = new int[n];
@@ -44,5 +46,29 @@ public class Trap {
         }
 
         return sum;
+    }
+
+    public int trap2(int[] height) {
+        int ans = 0;
+        // 单调栈，栈底 -> 栈顶 单调递减
+        Stack<Integer> stack = new Stack<>();
+        int n = height.length;
+        for (int i = 0; i < n; i++) {
+            // 违反单调的元素依次出栈
+            while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
+                // 需要两个元素
+                int top = stack.pop();
+                if (stack.isEmpty()) {
+                    break;
+                }
+                int left = stack.peek();
+                // 计算和前一个柱子的面积
+                int currWidth = i - left - 1;
+                int currHeight = Math.min(height[i], height[left]) - height[top];
+                ans += currWidth * currHeight;
+            }
+            stack.push(i);
+        }
+        return ans;
     }
 }
