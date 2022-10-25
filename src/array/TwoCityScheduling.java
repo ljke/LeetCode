@@ -39,7 +39,7 @@ public class TwoCityScheduling {
     }
 
     public static int twoCitySchedCost_opti(int[][] costs) {
-        //计算去A地和去B低的费用差，然后按照费用差排序
+        //计算去A地和去B地的费用差，然后按照费用差排序
         Arrays.sort(costs, Comparator.comparingInt(o -> (o[0] - o[1])));
         //前半部分去A地，后一半人去B地
         int len = costs.length / 2;

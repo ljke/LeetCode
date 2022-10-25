@@ -15,6 +15,7 @@ public class FindDuplicate {
     /**
      * 二分查找法
      * 原理：1～(target-1)的数满足count<=i, target~n的数满足count>i, 且满足单调性
+     * count表示 数组中小于等于 ii 的数有多少个
      *
      * @param nums
      * @return
@@ -35,6 +36,7 @@ public class FindDuplicate {
                 l = mid + 1;
             } else {
                 r = mid - 1;
+                // mid一定是满足条件的
                 ans = mid;
             }
         }

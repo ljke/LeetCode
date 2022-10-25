@@ -331,4 +331,55 @@ public class BinaryTree {
         }
         return lson || rson || node.val == p.val || node.val == q.val;
     }
+
+    /**
+     * 101. 对称二叉树
+     * https://leetcode.cn/problems/symmetric-tree/
+     * 递归做法
+     *
+     * @param root
+     * @return
+     */
+    public boolean isSymmetric(TreeNode root) {
+        return check(root, root);
+    }
+
+    public boolean check(TreeNode p, TreeNode q) {
+        if (p == null && q == null) {
+            return true;
+        }
+        if (p == null || q == null) {
+            return false;
+        }
+        return p.val == q.val && check(p.left, q.right) && check(p.right, q.left);
+    }
+
+    /**
+     * 迭代做法
+     *
+     * @param root
+     * @return
+     */
+    public boolean isSymmetric2(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        queue.offer(root);
+        TreeNode u, v;
+        while (!queue.isEmpty()) {
+            u = queue.poll();
+            v = queue.poll();
+            if (u == null && v == null) {
+                continue;
+            }
+            if (u == null || v == null || (u.val != v.val)) {
+                return false;
+            }
+            queue.offer(u.left);
+            queue.offer(v.right);
+
+            queue.offer(u.right);
+            queue.offer(v.left);
+        }
+        return true;
+    }
 }
