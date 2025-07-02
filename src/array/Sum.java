@@ -67,6 +67,8 @@ public class Sum {
             return result;
         Arrays.sort(nums);
         int target = 0; //目标为0
+        // 排序后使用双指针逼近,将枚举的时间复杂度从 O(N^2) 减少至 O(N)
+        // 需要跳过重复值
         for (int i = 0; i < (nums.length - 2); i++) {
             if (i > 0 && nums[i] == nums[i - 1]) //跳过相同的值
                 continue;

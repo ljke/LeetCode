@@ -2,10 +2,11 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2021 All Rights Reserved.
  */
-package array;
+package pointer;
 
 /**
  * 双指针遍历 移除元素
+ * 原地修改
  *
  * @author linjie
  * @version : RemoveElement.java, v 0.1 2021年08月25日 9:20 上午 linjie Exp $

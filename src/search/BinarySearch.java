@@ -1,10 +1,12 @@
 package search;
 
 /**
+ * 二分查找相关
+ *
  * @author linjie
  * @date 2020/07/17
  */
-public class BinarySort {
+public class BinarySearch {
     /**
      * 35. 搜索插入位置
      */

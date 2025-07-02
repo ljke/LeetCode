@@ -18,6 +18,7 @@ public class QuickSort {
         while (current <= end) { //Note: 这里是<=
             if (nums[current] == 0) {
                 //交换到begin的位置，然后begin和current后移
+                //换0时 由于前部元素已经check过，不是0也不是2，所以不需要再次check
                 swap(nums, begin, current);
                 current++;
                 begin++;
@@ -26,6 +27,7 @@ public class QuickSort {
                 current++;
             } else if (nums[current] == 2) {
                 //交换到end的位置，但是交换过来的元素需要判断，所以current位置不变
+                //换2时 由于后部元素都没有check过，所以需要再次check
                 swap(nums, current, end);
                 end--;
             }
