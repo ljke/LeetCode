@@ -5,8 +5,6 @@
 package linkedlist;
 
 /**
- * 剑指 Offer II 025. 链表中的两数相加
- *
  * @author linjie
  * @version : AddTwoNumbers.java, v 0.1 2021年08月06日 1:07 上午 linjie Exp $
  */
@@ -41,8 +39,8 @@ public class AddTwoNumbers {
 
 
     /**
-     * 两数相加
-     * https://leetcode.cn/problems/add-two-numbers/
+     * 445. 两数相加 II
+     * https://leetcode.cn/problems/add-two-numbers-ii/description/
      *
      * @param l1
      * @param l2

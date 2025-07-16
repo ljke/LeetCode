@@ -16,6 +16,7 @@ public class LinkedListCycle {
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
+            // 后置判断，相当于do-while，否则在链表头就匹配了
             if (slow == fast)
                 return true;
         }

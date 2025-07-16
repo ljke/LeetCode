@@ -54,6 +54,10 @@ class LRUCache {
         } else { //不存在则添加
             Node n = new Node(key, value);
             if (map.size() >= capacity) { //添加时注意超出边界的问题
+                /**
+                 * 这里顺序不能变
+                 * 否则end指向不对
+                 */
                 map.remove(end.key); //此时还要移除map中的值
                 remove(end); //删除尾结点，end的指向由remove()维护
             }

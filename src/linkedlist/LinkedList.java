@@ -4,8 +4,40 @@ package linkedlist;
  * 链表相关
  */
 public class LinkedList {
+
     /**
-     * 反转链表
+     * 19. 删除链表的倒数第 N 个结点
+     * https://leetcode.cn/problems/remove-nth-node-from-end-of-list/description
+     *
+     * @param head
+     * @param n
+     * @return
+     */
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+        // 双指针找到位置
+        ListNode p = dummy;
+        ListNode q = dummy;
+
+        for (int i = 0; i < n; i++) {
+            p = p.next;
+        }
+
+        // 可以模拟一下，找准判断条件
+        // 思路是p前进了n，剩余L-n
+        // p和q同时前进L-n，q就是要找的位置
+        while (p.next != null) {
+            p = p.next;
+            q = q.next;
+        }
+
+        q.next = q.next.next;
+        return dummy.next;
+    }
+
+    /**
+     * 206. 反转链表
      * https://leetcode.cn/problems/reverse-linked-list/
      *
      * @param head
@@ -33,7 +65,7 @@ public class LinkedList {
     }
 
     /**
-     * 反转链表-递归版
+     * 206. 反转链表-递归版
      *
      * @param head
      * @return
@@ -49,6 +81,7 @@ public class LinkedList {
         return newHead;
     }
     /**
+     * 92. 反转链表 II
      * 区间反转
      * https://leetcode.cn/problems/reverse-linked-list-ii/
      *
@@ -81,7 +114,7 @@ public class LinkedList {
     }
 
     /**
-     * 重排链表
+     * 143. 重排链表
      * https://leetcode-cn.com/problems/reorder-list/
      * 从首尾各取一个结点
      *
@@ -117,7 +150,7 @@ public class LinkedList {
     }
 
     /**
-     * 两两交换链表中的节点
+     * 24. 两两交换链表中的节点
      * https://leetcode-cn.com/problems/swap-nodes-in-pairs/
      *
      * @param head
@@ -143,7 +176,8 @@ public class LinkedList {
     }
 
     /**
-     * K 个一组翻转链表-递归-头插法
+     * 25. K 个一组翻转链表
+     * 递归-头插法
      * https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
      *
      * @param head
@@ -179,7 +213,8 @@ public class LinkedList {
     }
 
     /**
-     * K 个一组翻转链表-递归-直接反转
+     * 25. K 个一组翻转链表
+     * 递归-直接反转
      * https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
      *
      * @param head

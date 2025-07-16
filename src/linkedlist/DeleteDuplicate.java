@@ -5,6 +5,7 @@ package linkedlist;
  */
 public class DeleteDuplicate {
     /**
+     * 83. 删除排序链表中的重复元素
      * 删除重复，只留一个
      * https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
      *
@@ -30,6 +31,7 @@ public class DeleteDuplicate {
     }
 
     /**
+     * 82. 删除排序链表中的重复元素 II
      * 删除重复，只留不重复的
      * https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/
      *

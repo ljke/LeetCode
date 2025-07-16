@@ -1,5 +1,7 @@
 package pointer;
 
+import linkedlist.ListNode;
+
 /**
  * 双指针相关
  */
@@ -48,7 +50,7 @@ public class TwoPointer {
         while(l < r) {
             int area = Math.min(height[l], height[r]) * (r - l);
             max = Math.max(max, area);
-            // 排除调当前小的这个边界，移动短边
+            // 排除掉当前小的这个边界，移动短边
             if (height[l] <= height[r]) {
                 l++;
             } else {
@@ -85,6 +87,32 @@ public class TwoPointer {
         }
         // 考虑退出条件前的坐标
         return s.substring(l + 1, r);
+    }
+
+    /**
+     * 160. 相交链表
+     * https://leetcode.cn/problems/intersection-of-two-linked-lists/description/
+     *
+     * @param headA
+     * @param headB
+     * @return
+     */
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if (headA == null || headB == null) {
+            return null;
+        }
+
+        ListNode p1 = headA;
+        ListNode p2 = headB;
+        // 到达链表尾部时跳跃到另一个链表
+        // 假设headA和headB相交部分长度为c，不相交部分长度为a和b
+        // 这样在跳跃a + b + c次后，会指向相交点
+        while (p1 != p2) {
+            p1 = (p1 != null) ? p1.next : headB;
+            p2 = (p2 != null) ? p2.next : headA;
+        }
+
+        return p1;
     }
 
 }
