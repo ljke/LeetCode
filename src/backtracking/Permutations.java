@@ -77,7 +77,7 @@ public class Permutations {
             res.add(new ArrayList<>(output));
             return;
         }
-        // i必须从first开始，不能从first+1开始，否则进不了循环
+        // i必须从first开始，不能从first+1开始，否则会漏掉不交换的情况
         for (int i = first; i < n; i++) {
             Collections.swap(output, first, i);
             backtrace(output, n, first + 1, res);

@@ -15,7 +15,10 @@ public class FindDuplicate {
     /**
      * 二分查找法
      * 原理：1～(target-1)的数满足count<=i, target~n的数满足count>i, 且满足单调性
-     * count表示 数组中小于等于 ii 的数有多少个
+     * nums = [1,3,4,2,2]
+     * i	1	2	3	4
+     * cnt	1	3	4	5
+     * count表示 数组中小于等于 i 的数有多少个
      *
      * @param nums
      * @return

@@ -90,4 +90,33 @@ public class PreSum {
         }
         return ans;
     }
+
+    /**
+     * 238. 除自身以外数组的乘积
+     * https://leetcode.cn/problems/product-of-array-except-self/description/
+     *
+     * @param nums
+     * @return
+     */
+    public int[] productExceptSelf(int[] nums) {
+        int len = nums.length;
+        int[] L = new int[len];
+        int[] R = new int[len];
+        int[] result = new int[len];
+
+        L[0] = 1;
+        R[len - 1] = 1;
+
+        for (int i = 1; i < len; i++) {
+            // L表示左边的数的乘积
+            L[i] = L[i - 1] * nums[i - 1];
+            // R表示右边的数的乘积
+            R[len - i - 1] = R[len - i] * nums[len - i];
+        }
+
+        for (int i = 0; i < len; i++) {
+            result[i] = L[i] * R[i];
+        }
+        return result;
+    }
 }

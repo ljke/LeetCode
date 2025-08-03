@@ -11,12 +11,9 @@ public class BucketSort {
         int len = nums.length;
         //桶排序调整位置
         for (int i = 0; i < len; i++) {
-            while (nums[i] != (i + 1)) {
-                //数字不属于范围时跳过
-                //注意[1, 1]这种情况，换过来的数如果是相等的也退出
-                if (nums[i] <= 0 || nums[i] > len || nums[i] == nums[nums[i] - 1]) {
-                    break;
-                }
+            // 数字不属于范围时跳过
+            //注意[1, 1]这种情况，换过来的数如果是相等的也退出
+            while (nums[i] > 0 && nums[i] <= len && nums[i] != nums[nums[i] - 1]) {
                 //将数字交换到合适的位置i <-> (nums[i] - 1)
                 int tmp = nums[nums[i] - 1];
                 nums[nums[i] - 1] = nums[i];
