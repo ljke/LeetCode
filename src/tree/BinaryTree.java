@@ -43,6 +43,7 @@ public class BinaryTree {
         Stack<TreeNode> stack = new Stack<>();
         TreeNode node = root;
         // 对应下面的两种处理，一种是遍历到最左节点，另一种是从栈中取一个数
+        // 不提前push!!! stack.push(node)
         while (node != null || !stack.isEmpty()) {
             while (node != null) {
                 res.add(node.val);
@@ -168,10 +169,13 @@ public class BinaryTree {
                 root = root.left;
             }
             root = stack.pop();
+            // 对应两种情况：1. 没有右子树；2.上次遍历的节点就是右子树节点
             if (root.right == null || root.right == prev) {
-                // 出栈结束
+                // 左右子树都入栈结束
                 res.add(root.val);
+                // 记录上次遍历的节点
                 prev = root;
+                // 跳过下次循环的左子树入栈
                 root = null;
             } else {
                 // 右子树入栈
@@ -257,6 +261,7 @@ public class BinaryTree {
         // 先进行先序遍历
         List<TreeNode> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
+        // 不要直接改root
         TreeNode node = root;
         while (!stack.isEmpty() || node != null) {
             while (node != null) {
@@ -327,6 +332,7 @@ public class BinaryTree {
         boolean rson = dfs(node.right, p, q);
         // 判断条件
         if ((lson && rson) || ((node.val == p.val || node.val == q.val) && (lson || rson))) {
+            // 条件已经限定了最近公共祖先的唯一性，不存在多次赋值的情况
             ans = node;
         }
         return lson || rson || node.val == p.val || node.val == q.val;
@@ -336,6 +342,7 @@ public class BinaryTree {
      * 101. 对称二叉树
      * https://leetcode.cn/problems/symmetric-tree/
      * 递归做法
+     * 关键在于把root抽象成2个节点
      *
      * @param root
      * @return
@@ -381,5 +388,161 @@ public class BinaryTree {
             queue.offer(v.left);
         }
         return true;
+    }
+
+    /**
+     * 104. 二叉树的最大深度
+     * https://leetcode.cn/problems/maximum-depth-of-binary-tree/description/
+     *
+     * BFS 层序遍历
+     *
+     * @param root
+     * @return
+     */
+    public int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+        int depth = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                if (node.left != null) {
+                    queue.offer(node.left);
+                }
+                if (node.right != null) {
+                    queue.offer(node.right);
+                }
+            }
+            depth++;
+        }
+        return depth;
+    }
+
+    /**
+     * 226. 翻转二叉树
+     * https://leetcode.cn/problems/invert-binary-tree/description/
+     *
+     * @param root
+     * @return
+     */
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+        root.left = right;
+        root.right = left;
+        return root;
+    }
+
+    int res = 1;
+
+    /**
+     * 543. 二叉树的直径
+     * https://leetcode.cn/problems/diameter-of-binary-tree/description/
+     *
+     * @param root
+     * @return
+     */
+    public int diameterOfBinaryTree(TreeNode root) {
+        // 遍历树的深度
+        depth(root);
+        // ans是节点数，-1是边数
+        return res - 1;
+    }
+
+    public int depth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = depth(root.left);
+        int right = depth(root.right);
+        // 遍历过程中保存最大值
+        res = Math.max(res, left + right + 1);
+        return Math.max(left, right) + 1;
+    }
+
+    /**
+     * 108. 将有序数组转换为二叉搜索树
+     * https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/description/
+     * 类似于二分的转换
+     *
+     * @param nums
+     * @return
+     */
+    public TreeNode sortedArrayToBST(int[] nums) {
+        TreeNode node = recur(nums, 0, nums.length - 1);
+        return node;
+    }
+
+    public TreeNode recur(int[] nums, int begin, int end) {
+        if (begin == end) {
+            return new TreeNode(nums[begin]);
+        } else if (begin > end) {
+            return null;
+        }
+        int mid = begin + (end - begin) / 2;
+        // mid作为父节点，排除
+        TreeNode left = recur(nums, begin, mid - 1);
+        TreeNode right = recur(nums, mid + 1, end);
+        return new TreeNode(nums[mid], left, right);
+    }
+
+    /**
+     * 230. 二叉搜索树中第 K 小的元素
+     * https://leetcode.cn/problems/kth-smallest-element-in-a-bst/description/
+     * 中序遍历k次
+     *
+     * @param root
+     * @param k
+     * @return
+     */
+    public int kthSmallest(TreeNode root, int k) {
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            k--;
+            if (k == 0) {
+                break;
+            }
+            root = root.right;
+        }
+        return root.val;
+    }
+
+
+    /**
+     * 199. 二叉树的右视图
+     * https://leetcode.cn/problems/binary-tree-right-side-view/description/
+     *
+     * @param root
+     * @return
+     */
+    public List<Integer> rightSideView(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        dfs(root, ans, 1);
+        return ans;
+    }
+
+    public void dfs(TreeNode root, List<Integer> ans, int depth) {
+        if (root == null) {
+            return;
+        }
+        if (depth > ans.size()) {
+            // 记录每一层首次遍历到的节点
+            ans.add(root.val);
+        }
+        // 先遍历右子树
+        dfs(root.right, ans, depth + 1);
+        dfs(root.left, ans, depth + 1);
     }
 }

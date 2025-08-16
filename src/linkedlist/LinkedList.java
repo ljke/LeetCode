@@ -1,5 +1,7 @@
 package linkedlist;
 
+import java.util.PriorityQueue;
+
 /**
  * 链表相关
  */
@@ -294,6 +296,37 @@ public class LinkedList {
             cur.next = r;
         }
         return dummy.next;
+    }
+
+    /**
+     * 23. 合并 K 个升序链表
+     * https://leetcode.cn/problems/merge-k-sorted-lists/description/
+     *
+     * @param lists
+     * @return
+     */
+    public ListNode mergeKLists(ListNode[] lists) {
+        // 使用优先级队列进行多路合并
+        PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> {
+            return a.val - b.val;
+        });
+        for (ListNode n : lists) {
+            if (n != null) {
+                queue.offer(n);
+            }
+        }
+        ListNode head = new ListNode(-1);
+        // tail保存最后一个节点
+        ListNode tail = head;
+        while (!queue.isEmpty()) {
+            ListNode n = queue.poll();
+            if (n.next != null) {
+                queue.offer(n.next);
+            }
+            tail.next = n;
+            tail = n;
+        }
+        return head.next;
     }
 
     public static void main(String[] args) {

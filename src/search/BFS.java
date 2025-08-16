@@ -66,6 +66,59 @@ public class BFS {
         return 0;
     }
 
+    int[] dr = new int[]{-1, 0, 1, 0};
+    int[] dc = new int[]{0, -1, 0, 1};
+
+    /**
+     * 994. 腐烂的橘子
+     * https://leetcode.cn/problems/rotting-oranges/description/
+     *
+     * @param grid
+     * @return
+     */
+    public int orangesRotting(int[][] grid) {
+        int r = grid.length, c = grid[0].length;
+        Queue<Integer> queue = new LinkedList<>();
+        int count = 0;
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                if (grid[i][j] == 2) {
+                    // 多源BFS，所有初始腐烂橘子都作为起点
+                    queue.add(i * c + j);
+                } else if (grid[i][j] == 1) {
+                    // 记录新鲜橘子的数量，用于结果检查
+                    count++;
+                }
+            }
+        }
+        int time = 0;
+
+        while (!queue.isEmpty() && count > 0) {
+            int size = queue.size();
+            for (int x = 0; x < size; x++) {
+                int idx = queue.poll();
+                for (int y = 0; y < 4; y++) {
+                    // 向四个方向扩散
+                    int i = idx / c + dr[y];
+                    int j = idx % c + dc[y];
+                    if (i >= 0 && i < r && j >= 0 && j < c && grid[i][j] == 1) {
+                        // 所有腐烂橘子一定是已经遍历过的，所以无需额外访问判断
+                        grid[i][j] = 2;
+                        queue.add(i * c + j);
+                        count--;
+                    }
+                }
+            }
+            time++;
+        }
+
+        if (count > 0) {
+            return -1;
+        } else {
+            return time;
+        }
+    }
+
     /**
      * 752. 打开转盘锁
      * https://leetcode.cn/problems/open-the-lock/description/
@@ -153,6 +206,13 @@ public class BFS {
         }
     }
 
+    /**
+     * 双向BFS
+     *
+     * @param deadends
+     * @param target
+     * @return
+     */
     public int openLock2(String[] deadends, String target) {
         if ("0000".equals(target)) {
             return 0;

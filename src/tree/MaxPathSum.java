@@ -172,6 +172,39 @@ public class MaxPathSum {
         ret.add(tmp);
     }
 
+    /**
+     * 437. 路径总和 III
+     * https://leetcode.cn/problems/path-sum-iii/description/
+     * 执行双层的dfs
+     *
+     * @param root
+     * @param targetSum
+     * @return
+     */
+    public int pathSum(TreeNode root, long targetSum) {
+        if (root == null) {
+            return 0;
+        }
+        int res = 0;
+        res += dfs(root, targetSum);
+        res += pathSum(root.left, targetSum);
+        res += pathSum(root.right, targetSum);
+        return res;
+    }
+
+    public int dfs(TreeNode root, long targetSum) {
+        int res = 0;
+        if (root == null) {
+            return 0;
+        }
+        if (targetSum == root.val) {
+            res++;
+        }
+        res += dfs(root.left, targetSum - root.val);
+        res += dfs(root.right, targetSum - root.val);
+        return res;
+    }
+
     public int maxV = Integer.MIN_VALUE;
 
     /**
@@ -193,15 +226,15 @@ public class MaxPathSum {
         if (root == null) {
             return 0;
         }
-        // 计算左右节点值，只有正数才可以算入
+        // 计算左右节点值，只有正数才可以算入(因为可以选择不要这个子树)
         int left = Math.max(dfs(root.left), 0);
         int right = Math.max(dfs(root.right), 0);
         // 更新最大值，有2种情况
         // 1. 经过当前节点的路径
-        // 2. 以当前节点为顶点的路径
-        // 这里简化为只考虑第1种
+        // 2. 以当前节点为顶点的路径(不要一个子树，即left/right = 0)
+        // 所以可以统一表示为：
         maxV = Math.max(maxV, root.val + left + right);
-        // 返回结果
+        // 返回结果，只能保留一个子树（保留大的那个）
         return root.val + Math.max(left, right);
     }
 }

@@ -135,4 +135,27 @@ public class BinarySearch {
         }
         return -1;
     }
+
+    /**
+     * 153. 寻找旋转排序数组中的最小值
+     * https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/description/
+     *
+     * @param nums
+     * @return
+     */
+    public int findMin(int[] nums) {
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < nums[right]) {
+                // 此处不能设置为mid-1，因为是无限逼近right，最终mid==right
+                right = mid;
+            } else if (nums[mid] > nums[right]) {
+                left = mid + 1;
+            } else {
+                return nums[mid];
+            }
+        }
+        return nums[right];
+    }
 }
