@@ -2,20 +2,23 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2022 All Rights Reserved.
  */
-package array;
+package DP;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 119. 杨辉三角 II
- * https://leetcode.cn/problems/pascals-triangle-ii/submissions/
- * 
  * @author linjie
  * @version : YanghuiTriangle.java, v 0.1 2022年06月23日 12:29 上午 linjie Exp $
  */
 public class YanghuiTriangle {
+
+
+
     /**
+     * 119. 杨辉三角 II
+     * https://leetcode.cn/problems/pascals-triangle-ii/submissions/
+     *
      * 思想类似于动态规划，从前一个状态推导出下一个状态
      * 这里就是构造每一行杨辉三角数据
      * 

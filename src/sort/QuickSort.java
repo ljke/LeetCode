@@ -1,5 +1,7 @@
 package sort;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -126,32 +128,5 @@ public class QuickSort {
         }
         nums[i] = pivot;
         return i;
-    }
-
-    /**
-     * 找第K大数的另类解法，使用大小为K的堆，堆顶元素即为第K大数
-     *
-     * @param nums
-     * @param k
-     * @return
-     */
-    public static int findKthLargest_alter(int[] nums, int k) {
-        Queue<Integer> q = new PriorityQueue<>();
-        for (int x : nums) {
-            if (q.size() < k) {
-                q.offer(x);
-            } else {
-                int top = q.peek();
-                if (x > top) {
-                    q.poll();
-                    q.offer(x);
-                }
-            }
-        }
-        return q.peek();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(findKthLargest(new int[]{-1, 2, 0}, 2));
     }
 }

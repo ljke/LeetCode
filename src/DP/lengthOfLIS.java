@@ -1,4 +1,4 @@
-package recursionAndDP;
+package DP;
 
 /**
  * @author : ljke

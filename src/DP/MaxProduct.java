@@ -1,4 +1,4 @@
-package array;
+package DP;
 
 import static java.lang.Math.max;
 import static java.lang.Math.min;

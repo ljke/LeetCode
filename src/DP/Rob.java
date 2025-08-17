@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2022 All Rights Reserved.
  */
-package recursionAndDP;
+package DP;
 
 /**
  * 198. 打家劫舍
