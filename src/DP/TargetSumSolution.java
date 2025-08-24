@@ -5,15 +5,15 @@
 package DP;
 
 /**
- * 494. 目标和
- * https://leetcode.cn/problems/target-sum/
- *
  * @author linjie
- * @version : FindTargetSumWays.java, v 0.1 2022年08月20日 8:57 下午 linjie Exp $
+ * @version : TargetSumSolution.java, v 0.1 2022年08月20日 8:57 下午 linjie Exp $
  */
-public class FindTargetSumWays {
+public class TargetSumSolution {
 
     /**
+     * 494. 目标和
+     * https://leetcode.cn/problems/target-sum/
+     *
      * 动态规划
      *
      * @param nums
@@ -39,6 +39,7 @@ public class FindTargetSumWays {
         for (int i = 1; i <= n; i++) {
             int num = nums[i - 1];
             for(int j = 0; j <= neg; j++) {
+                // 选取 + 不选取
                 dp[i][j] = dp[i - 1][j];
                 if (j >= num) {
                     dp[i][j] += dp[i - 1][j - num];
@@ -72,6 +73,49 @@ public class FindTargetSumWays {
         // 两种情况
         backtrace(nums, target, index + 1, sum + nums[index]);
         backtrace(nums, target, index + 1, sum - nums[index]);
+    }
+
+    /**
+     * 416. 分割等和子集
+     * https://leetcode.cn/problems/partition-equal-subset-sum/description/
+     *
+     * @param nums
+     * @return
+     */
+    public boolean canPartition(int[] nums) {
+        int len = nums.length;
+        // 排除一些不可能情况
+        if (len < 2) {
+            return false;
+        }
+        int sum = 0;
+        int maxNum = 0;
+        for (int n : nums) {
+            sum += n;
+            maxNum = Math.max(maxNum, n);
+        }
+        if (sum % 2 != 0) {
+            return false;
+        }
+        int target = sum / 2;
+        if (maxNum > (sum / 2)) {
+            return false;
+        }
+        // 转换成背包问题，dp[i][j]表示从数组[0,i]范围内选取的数和能否等于j
+        boolean[][] dp = new boolean[len + 1][target + 1];
+        dp[0][0] = true;
+        for (int i = 1; i <= len; i++) {
+            int num = nums[i - 1];
+            for (int j = 0; j <= target; j++) {
+                // 选取 + 不选取
+                if (j >= num) {
+                    dp[i][j] = dp[i - 1][j] | dp[i - 1][j - num];
+                } else {
+                    dp[i][j] = dp[i - 1][j];
+                }
+            }
+        }
+        return dp[len][target];
     }
 
 

@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2022 All Rights Reserved.
  */
-package DP;
+package greedy;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -17,12 +17,42 @@ import java.util.Comparator;
 public class EraseOverlapIntervals {
 
     /**
-     * 动态规划
+     * 贪心算法
      *
      * @param intervals
      * @return
      */
     public int eraseOverlapIntervals1(int[][] intervals) {
+        if (intervals.length == 0) {
+            return 0;
+        }
+        // 先按右端点进行升序排序
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            public int compare(int[] interval1, int[] interval2) {
+                return interval1[1] - interval2[1];
+            }
+        });
+        // 贪心算法, 每次都取最小的右边界
+        int n = intervals.length;
+        int right = intervals[0][1];
+        int count = 1;
+        // 遍历
+        for(int i = 1; i < n; i++) {
+            if (intervals[i][0] >= right) {
+                count++;
+                right = intervals[i][1];
+            }
+        }
+        return n - count;
+    }
+
+    /**
+     * 动态规划
+     *
+     * @param intervals
+     * @return
+     */
+    public int eraseOverlapIntervals2(int[][] intervals) {
         if (intervals.length == 0) {
             return 0;
         }
@@ -53,33 +83,4 @@ public class EraseOverlapIntervals {
         return n - max;
     }
 
-    /**
-     * 贪心算法
-     *
-     * @param intervals
-     * @return
-     */
-    public int eraseOverlapIntervals2(int[][] intervals) {
-        if (intervals.length == 0) {
-            return 0;
-        }
-        // 先按右端点进行升序排序
-        Arrays.sort(intervals, new Comparator<int[]>() {
-            public int compare(int[] interval1, int[] interval2) {
-                return interval1[1] - interval2[1];
-            }
-        });
-        // 贪心算法, 每次都取最小的右边界
-        int n = intervals.length;
-        int right = intervals[0][1];
-        int count = 1;
-        // 遍历
-        for(int i = 1; i < n; i++) {
-            if (intervals[i][0] >= right) {
-                count++;
-                right = intervals[i][1];
-            }
-        }
-        return n - count;
-    }
 }

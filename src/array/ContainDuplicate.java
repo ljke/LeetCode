@@ -7,6 +7,8 @@ import java.util.*;
  */
 public class ContainDuplicate {
     /**
+     * 217. 存在重复元素
+     * https://leetcode.cn/problems/contains-duplicate/description/
      * 是否存在重复元素
      *
      * @param nums
@@ -26,6 +28,8 @@ public class ContainDuplicate {
     }
 
     /**
+     * 219. 存在重复元素 II
+     * https://leetcode.cn/problems/contains-duplicate-ii/description/
      * 在指定间隔内存在重复元素
      *
      * @param nums
@@ -53,6 +57,8 @@ public class ContainDuplicate {
     }
 
     /**
+     * 220. 存在重复元素 III
+     * https://leetcode.cn/problems/contains-duplicate-iii/description/
      * 在指定间隔内指定差值内的元素
      *
      * @param nums

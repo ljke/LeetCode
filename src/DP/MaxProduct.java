@@ -26,6 +26,7 @@ public class MaxProduct {
             maxValue = max(maxValue * nums[i], max(minValue * nums[i], nums[i]));
             minValue = min(tmp * nums[i], min(minValue * nums[i], nums[i]));
             if (maxValue > result) {
+                // 可以不要后续的数字，所以要保存最大值
                 result = maxValue;
             }
         }

@@ -12,6 +12,29 @@ package array;
  * @version : FindDuplicate.java, v 0.1 2022年08月21日 10:23 上午 linjie Exp $
  */
 public class FindDuplicate {
+
+    /**
+     * 快慢指针
+     * 以i -> nums[i]为边构造图，因为存在重复nums[i]，所以存在环
+     * 找出环的入口位置
+     *
+     * @param nums
+     * @return
+     */
+    public int findDuplicate1(int[] nums) {
+        int slow = 0, fast = 0;
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+        slow = 0;
+        while (fast != slow) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return fast;
+    }
+
     /**
      * 二分查找法
      * 原理：1～(target-1)的数满足count<=i, target~n的数满足count>i, 且满足单调性
@@ -23,7 +46,7 @@ public class FindDuplicate {
      * @param nums
      * @return
      */
-    public int findDuplicate1(int[] nums) {
+    public int findDuplicate2(int[] nums) {
         int n = nums.length;
         int l = 1, r = n - 1, ans = -1;
         while (l <= r) {
@@ -44,27 +67,5 @@ public class FindDuplicate {
             }
         }
         return ans;
-    }
-
-    /**
-     * 快慢指针
-     * 以i -> nums[i]为边构造图，因为存在重复nums[i]，所以存在环
-     * 找出环的入口位置
-     *
-     * @param nums
-     * @return
-     */
-    public int findDuplicate2(int[] nums) {
-        int slow = 0, fast = 0;
-        do {
-            slow = nums[slow];
-            fast = nums[nums[fast]];
-        } while (slow != fast);
-        slow = 0;
-        while (fast != slow) {
-            slow = nums[slow];
-            fast = nums[fast];
-        }
-        return fast;
     }
 }

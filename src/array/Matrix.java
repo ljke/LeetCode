@@ -126,7 +126,7 @@ public class Matrix {
      */
     public void rotate(int[][] matrix) {
         int n = matrix.length;
-        // 水平翻转
+        // 水平轴翻转
         for (int i = 0; i < n / 2; i++) {
             for (int j = 0; j < n; j++) {
                 int tmp = matrix[i][j];

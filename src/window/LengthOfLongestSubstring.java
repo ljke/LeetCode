@@ -14,7 +14,31 @@ import java.util.Set;
  * @version : LengthOfLongestSubstring.java, v 0.1 2021年07月23日 1:01 上午 linjie Exp $
  */
 public class LengthOfLongestSubstring {
-    public int lengthOfLongestSubstring(String s) {
+
+    /**
+     * 优化版
+     *
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstring1(String s) {
+        int left = 0, right = 0;
+        int max = 0;
+        Set<Character> preChar = new HashSet<>();
+        // 移动右指针扩大
+        for(;right < s.length(); right++) {
+            //每次左移N位，直到跳过重复字符
+            while (preChar.contains(s.charAt(right))) {
+                preChar.remove(s.charAt(left));
+                left++;
+            }
+            preChar.add(s.charAt(right));
+            max = Math.max(max, right - left + 1);
+        }
+        return max;
+    }
+
+    public int lengthOfLongestSubstring2(String s) {
         Set<Character> appeared = new HashSet<>();
         int len = s.length();
         int left = 0, right = -1;
@@ -32,28 +56,5 @@ public class LengthOfLongestSubstring {
             ans = Math.max(ans, right - left + 1);
         }
         return ans;
-    }
-
-    /**
-     * 优化版
-     *
-     * @param s
-     * @return
-     */
-    public int lengthOfLongestSubstring2(String s) {
-        int left = 0, right = 0;
-        int max = 0;
-        Set<Character> preChar = new HashSet<>();
-        // 移动右指针扩大
-        for(;right < s.length(); right++) {
-            //每次左移N位，直到跳过重复字符
-            while (preChar.contains(s.charAt(right))) {
-                preChar.remove(s.charAt(left));
-                left++;
-            }
-            preChar.add(s.charAt(right));
-            max = Math.max(max, right - left + 1);
-        }
-        return max;
     }
 }

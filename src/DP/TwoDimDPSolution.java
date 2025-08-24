@@ -5,16 +5,15 @@
 package DP;
 
 /**
- * 62. 不同路径
- * https://leetcode.cn/problems/unique-paths/
- *
+ * 二维DP问题
  * @author linjie
- * @version : UniquePaths.java, v 0.1 2022年07月17日 12:32 上午 linjie Exp $
+ * @version : TwoDimDPSolution.java, v 0.1 2022年07月17日 12:32 上午 linjie Exp $
  */
-public class UniquePaths {
+public class TwoDimDPSolution {
 
     /**
-     * 动态规划
+     * 62. 不同路径
+     * https://leetcode.cn/problems/unique-paths/
      *
      * @param m
      * @param n
@@ -37,4 +36,6 @@ public class UniquePaths {
         }
         return f[m - 1][n - 1];
     }
+
+
 }
