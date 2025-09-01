@@ -36,7 +36,7 @@ public class BFS {
         if (!roadMap.containsKey(endWord)) {
             return 0;
         }
-        // dfs遍历 记录层级
+        // bfs遍历 记录层级
         int step = 0;
         Queue<String> queue = new LinkedList<>();
         Set<String> visited = new HashSet<>();

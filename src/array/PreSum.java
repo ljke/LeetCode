@@ -30,9 +30,7 @@ public class PreSum {
         }
 
         public int sumRange(int left, int right) {
-            // preSum[i] - preSum[j] = (j, i]数组的和
-            // (left, right + 1)
-            // (i - 1, j)
+            // preSum[right] - preSum[left] = [left, right)数组的和
             return preSum[right + 1] - preSum[left];
         }
     }

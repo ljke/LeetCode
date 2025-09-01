@@ -6,6 +6,7 @@ package string;
 
 /**
  * 67. 二进制求和
+ * https://leetcode.cn/problems/add-binary/
  * 遍历模拟
  *
  * @author linjie

@@ -19,7 +19,7 @@ public class DifferenceArray {
      * @return
      */
     public boolean isZeroArray(int[] nums, int[][] queries) {
-        // 构建差分数组
+        // 构建差分数组，多一位：防止j+1越界
         int[] diff = new int[nums.length + 1];
         for (int[] q : queries) {
             int i = q[0];
@@ -57,16 +57,18 @@ public class DifferenceArray {
         if (!check(nums, queries, right)) {
             return -1;
         }
-
-        while (left < right) {
+        // 保存最后一次满足的位置
+        int ans = -1;
+        while (left <= right) {
             int mid = left + ((right - left) >> 1);
             if (check(nums, queries, mid)) {
-                right = mid;
+                ans = mid;
+                right = mid - 1;
             } else {
                 left = mid + 1;
             }
         }
-        return left;
+        return ans;
     }
 
     public boolean check(int[] nums, int[][] queries, int index) {

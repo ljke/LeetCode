@@ -67,10 +67,10 @@ public class ValidBrackets {
             if (c == '(') {
                 stack.push(i);
             } else {
-                //匹配一个左括号
+                //匹配一个左括号或者删除栈底元素
                 stack.pop();
                 if (stack.isEmpty()) {
-                    // 补充栈底
+                    // 补充栈底元素：最后一个没有被匹配的右括号的下标
                     stack.push(i);
                 } else {
                     // 说明匹配正确，计算最长有效长度

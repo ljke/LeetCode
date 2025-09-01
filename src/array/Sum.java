@@ -29,6 +29,7 @@ public class Sum {
 
     /**
      * 167. 两数之和 II - 输入有序数组
+     * https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/
      * 双指针缩小查找范围，不会出现错过正确位置的情况
      * 时间复杂度：O(n)
      * 空间复杂度：O(1)
@@ -98,7 +99,8 @@ public class Sum {
     }
 
     /**
-     * 取列表中的三个数，和最接近于target
+     * 16. 最接近的三数之和
+     * https://leetcode.cn/problems/3sum-closest/description/
      *
      * @param nums
      * @param target
@@ -130,7 +132,8 @@ public class Sum {
     }
 
     /**
-     * 取列表中的四个数，和等于target
+     * 18. 四数之和
+     * https://leetcode.cn/problems/4sum/description/
      *
      * @param nums
      * @param target
@@ -168,7 +171,7 @@ public class Sum {
                     if (j >= pair[0]) //i, j作为前两个数，跳过其他重复情况
                         continue;
                     Integer[] sol = new Integer[]{nums[i], nums[j], nums[pair[0]], nums[pair[1]]};
-                    //Arrays.sort(sol); //已经是拍好序的了
+                    //Arrays.sort(sol); //已经是排好序的了
                     String key = Arrays.toString(sol);
                     if (!used.contains(key)) {
                         result.add(Arrays.asList(sol));

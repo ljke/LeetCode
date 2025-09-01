@@ -14,7 +14,7 @@ public class HeapSolution {
      * 215. 数组中的第K个最大元素
      * https://leetcode.cn/problems/kth-largest-element-in-an-array/
      *
-     * 找第K大数的另类解法，使用大小为K的小顶堆，堆顶元素即为第K大数
+     * 使用大小为K的小顶堆，堆顶元素即为第K大数
      *
      * @param nums
      * @param k
@@ -39,7 +39,7 @@ public class HeapSolution {
     /**
      * 347. 前 K 个高频元素
      * https://leetcode.cn/problems/top-k-frequent-elements/description/
-     * 同上，堆排序
+     * 同上，堆排序，小顶堆
      *
      * @param nums
      * @param k

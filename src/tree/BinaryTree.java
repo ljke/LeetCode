@@ -162,25 +162,26 @@ public class BinaryTree {
         List<Integer> res = new ArrayList<>();
         // 记录上一个处理节点，用于区分两次压栈
         TreeNode prev = null;
-        while (!stack.isEmpty() || root != null) {
-            while (root != null) {
+        TreeNode node = root;
+        while (!stack.isEmpty() || node != null) {
+            while (node != null) {
                 // 左子树入栈
-                stack.push(root);
-                root = root.left;
+                stack.push(node);
+                node = node.left;
             }
-            root = stack.pop();
+            node = stack.pop();
             // 对应两种情况：1. 没有右子树；2.上次遍历的节点就是右子树节点
-            if (root.right == null || root.right == prev) {
+            if (node.right == null || node.right == prev) {
                 // 左右子树都入栈结束
-                res.add(root.val);
+                res.add(node.val);
                 // 记录上次遍历的节点
-                prev = root;
+                prev = node;
                 // 跳过下次循环的左子树入栈
-                root = null;
+                node = null;
             } else {
                 // 右子树入栈
-                stack.push(root);
-                root = root.right;
+                stack.push(node);
+                node = node.right;
             }
         }
         return res;
@@ -215,6 +216,8 @@ public class BinaryTree {
     }
 
     /**
+     * 102. 二叉树的层序遍历
+     * https://leetcode.cn/problems/binary-tree-level-order-traversal/
      * 层次遍历，广度优先搜索
      *
      * @param root
@@ -248,7 +251,7 @@ public class BinaryTree {
 
 
     /**
-     * 二叉树展开为链表
+     * 114. 二叉树展开为链表
      * https://leetcode.cn/problems/flatten-binary-tree-to-linked-list/submissions/
      * 非原地做法，先展开后修改指向
      *

@@ -57,7 +57,7 @@ public class YanghuiTriangle {
         for (int i = 0; i <= rowIndex; i++) {
             // 每行增加一个元素
             triangle.add(1);
-            // 不处理第一个和最后一个元素，并且从后往前处理
+            // 不处理第一个和最后一个元素，并且从后往前处理，避免上一行值被覆盖
             for (int j = (i - 1); j > 0; j--) {
                 int x = triangle.get(j - 1) + triangle.get(j);
                 triangle.set(j, x);

@@ -1,5 +1,7 @@
 package sort;
 
+import heap.HeapSolution;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -78,6 +80,8 @@ public class QuickSort {
      * 215. 寻找数组中的第K个最大元素
      * https://leetcode-cn.com/problems/kth-largest-element-in-an-array/
      * 使用快排的分区思想
+     * 直接使用堆排序更简单
+     * @see HeapSolution#findKthLargest(int[], int)
      *
      * @param nums
      * @param k

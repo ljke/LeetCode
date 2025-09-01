@@ -10,7 +10,7 @@ package string;
  */
 public class Palindrome {
     /**
-     * 回文数
+     * 9. 回文数
      * https://leetcode-cn.com/problems/palindrome-number/
      *
      * @param x
@@ -31,7 +31,7 @@ public class Palindrome {
     }
 
     /**
-     * 回文字符串
+     * 125. 验证回文串
      * https://leetcode-cn.com/problems/valid-palindrome/
      *
      * @param s
@@ -59,7 +59,7 @@ public class Palindrome {
     }
 
     /**
-     * 回文子串
+     * 647. 回文子串
      * https://leetcode-cn.com/problems/palindromic-substrings/
      *
      * @param s

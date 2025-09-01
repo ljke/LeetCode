@@ -16,6 +16,7 @@ public class UnionFind {
             count = 0;
             int m = grid.length;
             int n = grid[0].length;
+            // 这里有个小瑕疵相当于所有'0'的位置parent都是index=0，但是不影响结果
             parent = new int[m * n];
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {

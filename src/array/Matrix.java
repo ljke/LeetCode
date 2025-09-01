@@ -120,7 +120,7 @@ public class Matrix {
     /**
      * 48. 旋转图像
      * https://leetcode.cn/problems/rotate-image/description/
-     * 顺时针旋转 90 度 = 水平翻转 + 主对角线翻转
+     * 顺时针旋转 90 度 = 水平轴翻转 + 主对角线翻转
      *
      * @param matrix
      */

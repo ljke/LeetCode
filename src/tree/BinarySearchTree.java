@@ -48,6 +48,7 @@ public class BinarySearchTree {
 
     /**
      * 96. 不同的二叉搜索树
+     * https://leetcode.cn/problems/unique-binary-search-trees/description/
      * G(n):长度为n的序列能构成的数量
      * F(i,n):以i为根，序列长度为n的数量
      * G(n) = ∑F(i, n)
@@ -58,7 +59,7 @@ public class BinarySearchTree {
      * @return
      */
     public int numOfDifferentBST(int n) {
-        int[] dp = new int[n+1];
+        int[] dp = new int[n + 1];
         dp[0] = 1;
         dp[1] = 1;
 

@@ -3,8 +3,8 @@ package tree;
 /**
  *
  * 线段树解法
- *  307. 区域和检索 - 数组可修改
- *  https://leetcode.cn/problems/range-sum-query-mutable/description/
+ * 307. 区域和检索 - 数组可修改
+ * https://leetcode.cn/problems/range-sum-query-mutable/description/
  *
  * @author : ljke
  * @date : Created in 23:10 2025/8/7

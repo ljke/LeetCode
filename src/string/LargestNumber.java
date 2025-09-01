@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2022 All Rights Reserved.
  */
-package array;
+package string;
 
 import java.util.Arrays;
 
@@ -15,6 +15,7 @@ import java.util.Arrays;
  */
 public class LargestNumber {
     public String largestNumber(int[] nums) {
+        // 转换成包装类型，以便传入 Comparator 对象（此处为 lambda 表达式）
         Integer[] numsArr = new Integer[nums.length];
         for(int i = 0; i < nums.length; i++) {
             numsArr[i] = nums[i];

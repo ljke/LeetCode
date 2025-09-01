@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 105. 从前序与中序遍历序列构造二叉树
+ * https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
+ *
  * @author linjie
  * @version : BuildTree.java, v 0.1 2022年07月03日 4:29 下午 linjie Exp $
  */
@@ -29,8 +32,6 @@ public class BuildTree {
     }
 
     /**
-     *
-     *
      * @param preorder
      * @param inorder
      * @return

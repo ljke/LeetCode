@@ -100,7 +100,7 @@ public class LinkedList {
         }
         ListNode head2 = prev; //head2是反转区间的前一个位置
         prev = prev.next; //prev是反转链表的最后一个结点，不断指向新的后继
-        ListNode cur = prev.next; //cur是反转链表的第一个结点，不断添加到head之后
+        ListNode cur = prev.next; //cur是反转链表的第一个结点，不断添加到head2之后
         //头插法
         for (int i = 0; i < n - m; i++) {
             //prev.next保存后方位置
